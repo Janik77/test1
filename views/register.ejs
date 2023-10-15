@@ -1,0 +1,47 @@
+<%- include('./blocks/head.ejs')%>
+    <%- include('./blocks/navbar.ejs')%>
+
+        <div class="container">
+
+            <form action="/register" class="form" method="POST">
+                <% if( (typeof registerError) !='undefined' ) { %>
+                    <p class="error">
+                        <%=registerError%>
+                    </p>
+                    <% } %>
+                        <div class="form__container">
+                            <label for="email">Введите E-mail</label>
+                            <input type="email" class="form__input" id="email" name="email" placeholder="E-mail">
+                        </div>
+                        <div class="form__container">
+                            <label for="name">Введите ФИО</label>
+                            <input type="text" class="form__input" id="name" name="name" placeholder="ФИО">
+                        </div>
+                        <div class="form__container">
+                            <label for="azs_number">Введите номер АЗС</label>
+                            <input type="text" class="form__input" id="azs_number" name="azs_number"
+                                placeholder="Номер автозаправочной станции">
+                        </div>
+
+                        <div class="form__container">
+                            <label for="role">Выберите роль</label>
+                            <select id="role" name="role" class="form__input">
+                                <option value="Менеджер">Менеджер</option>
+                                <option value="Оператор кассы">Оператор кассы</option>
+                                <option value="Разливщик">Разливщик</option>
+                            </select>
+                        </div>
+
+                        <div class="form__container">
+                            <label for="password">Введите пароль</label>
+                            <input type="password" class="form__input" id="password" name="password"
+                                placeholder="Пароль">
+                        </div>
+                        <input type="hidden" name="_csrf" value="<%=csrf%>">
+                        <button class="form__btn" type="submit">Готово</button>
+            </form>
+        </div>
+
+
+
+        <%- include('./blocks/footer.ejs')%>
